@@ -3,5 +3,5 @@ import './app.scss'
 
 
 export default function Home(){
-    return <div>This is Home</div>
+    return <div className="container">This is Home</div>
 }

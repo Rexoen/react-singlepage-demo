@@ -2,5 +2,5 @@ import React from 'react';
 
 
 export default function Login(){
-    return <div>This is Login</div>
+    return <div className="container">This is Login</div>
 }
