@@ -1,5 +1,9 @@
 import React from 'react';
+import {Input,Button,Select} from 'antd';
+import 'antd/dist/antd.css';
 import './App.scss';
+const Search = Input.Search;
+const Option = Select.Option;
 
 class App extends React.Component{
     state = {
@@ -19,21 +23,38 @@ class App extends React.Component{
             list
     })
     }
+    handleSearch = (val) => {
+        let {list} = this.state
+        list.push(val)
+        this.setState({
+            list
+    })
+
+    }
 
     render(){
-      const {val,list} = this.state;
+        const {val,list} = this.state;
+        const options = [];
         return <div>
         <p>This is my first line of codes in react!</p>
         <h1>Hello World!</h1>
-        <input type="text" value={val} onChange={this.handleChange}/>
-        <button onClick={this.handleAdd}>Add</button>
+        <Input type="text" value={val} style={{width:300}} onChange={this.handleChange}/>
+        <Button type="primary" onClick={this.handleAdd}>Add</Button>
         <ul>
             {
                 list.map((item,index)=>{
+                    options.push(<Option key={index}>{item}</Option>);
                     return <li key={index}>{item}</li>
                 })
             }
         </ul>
+        <div>
+            <Search enterButton="Add" style={{width:370}} onSearch={this.handleSearch}></Search>
+            <br/>
+            <Select style={{width:300}}>
+                {options}
+            </Select>
+        </div>
 
       </div>
 
